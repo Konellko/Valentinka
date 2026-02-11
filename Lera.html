@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Для тебя ❤️</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffe6ea;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+.wrapper {
+  padding-top: 80px;
+}
+h1 {
+  font-size: 30px;
+  color: #d6336c;
+}
+p {
+  font-size: 20px;
+  color: #333;
+  margin: 20px;
+}
+button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.25s;
+  position: relative;
+}
+button:hover {
+  transform: scale(1.1);
+  background: #ff1f4d;
+}
+#noBtn {
+  background: #999;
+  position: absolute;
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+  <h1>У меня есть вопрос...</h1>
+  <p>Будешь моей валентинкой?</p>
+
+  <button onclick="goToYes()">Да ❤️</button>
+  <button id="noBtn">Нет 💔</button>
+</div>
+
+<script>
+function goToYes() {
+  window.location.href = "yes.html";
+}
+
+const btnNo = document.getElementById("noBtn");
+
+btnNo.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 150);
+  const y = Math.random() * (window.innerHeight - 150);
+  btnNo.style.left = x + "px";
+  btnNo.style.top = y + "px";
+});
+</script>
+</body>
+</html>
