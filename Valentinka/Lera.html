@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -43,16 +44,6 @@ button:hover {
   background: #999;
   position: absolute;
 }
-#heart {
-  font-size: 60px;
-  opacity: 0;
-  animation: pop 1.2s infinite;
-}
-@keyframes pop {
-  0% { transform: scale(0.8); opacity: 0.4; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.8); opacity: 0.4; }
-}
 </style>
 </head>
 
@@ -61,17 +52,13 @@ button:hover {
   <h1>У меня есть вопрос...</h1>
   <p>Будешь моей валентинкой?</p>
 
-  <button onclick="showLove()">Да ❤️</button>
+  <button onclick="goToYes()">Да ❤️</button>
   <button id="noBtn">Нет 💔</button>
-
-  <div id="heart">❤️</div>
 </div>
 
 <script>
-function showLove() {
-  document.querySelector("h1").innerText = "Ура!";
-  document.querySelector("p").innerText = "Я очень рад(а) 💕";
-  document.getElementById("heart").style.opacity = "1";
+function goToYes() {
+  window.location.href = "yes.html";
 }
 
 const btnNo = document.getElementById("noBtn");
