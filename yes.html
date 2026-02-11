@@ -5,6 +5,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Я люблю тебя ❤️</title>
+
 <style>
 body {
   margin: 0;
@@ -12,34 +13,78 @@ body {
   background: #ffe6ea;
   font-family: Arial, sans-serif;
   text-align: center;
+  height: 100vh;
+  overflow: hidden;
 }
+
 h1 {
   margin-top: 60px;
   font-size: 38px;
   color: #d6336c;
 }
+
 #heart {
   font-size: 70px;
   margin: 20px 0;
   animation: pop 1.2s infinite;
 }
+
 @keyframes pop {
   0% { transform: scale(0.8); opacity: 0.4; }
   50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(0.8); opacity: 0.4; }
 }
-img {
-  width: 320px;
-  margin-top: 20px;
-  border-radius: 20px;
+
+.particle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: boom 900ms ease-out forwards;
+}
+
+@keyframes boom {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.3);
+  }
 }
 </style>
 </head>
 
 <body>
-  <h1>Я люблю тебя ❤️</h1>
-  <div id="heart">❤️</div>
 
-  <img src="https://i.imgur.com/7HkS3xC.png" alt="Обнимающиеся котики">
+<h1>Я люблю тебя ❤️</h1>
+<div id="heart">❤️</div>
+
+<script>
+document.addEventListener('click', e => {
+  const particles = 36;
+  const radius = 140;
+
+  for (let i = 0; i < particles; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+
+    p.style.background = `hsl(${Math.random() * 360}, 100%, 65%)`;
+
+    p.style.left = e.clientX + 'px';
+    p.style.top = e.clientY + 'px';
+
+    const angle = (Math.PI * 2 * i) / particles;
+    p.style.setProperty('--dx', Math.cos(angle) * radius + 'px');
+    p.style.setProperty('--dy', Math.sin(angle) * radius + 'px');
+
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 900);
+  }
+});
+</script>
+
 </body>
 </html>
